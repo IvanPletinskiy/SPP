@@ -1,16 +1,26 @@
 # SPP
-setup:
+
+SETUP:
+
 npm install
+
 cd ./sever
+
 npm install
+
 cd ../
+
 cd ./frontend
+
 npm install
 
 
-to start server
+START SERVER:
+
 npm start
 
-to run client
+RUN CLIENT:
+
 cd ./frontend
+
 npm start
