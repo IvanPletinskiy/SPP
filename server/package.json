@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "dependencies": {
+    "body-parser": "^1.19.2"
   },
   "scripts": {
     "start": "node server/index.js"
