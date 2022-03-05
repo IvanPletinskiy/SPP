@@ -26,7 +26,7 @@ cd ./frontend
 npm start
 
 
-#Setup Postgresql
+# Setup Postgresql
 
 Install it locally: https://blog.logrocket.com/nodejs-expressjs-postgresql-crud-rest-api-example/#creatingapostgresqldatabase
 
