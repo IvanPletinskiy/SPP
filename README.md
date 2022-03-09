@@ -2,42 +2,48 @@
 
 SETUP:
 
-npm install
+`npm install`
 
-cd ./server
+`cd ./server`
 
-npm install
+`npm install`
 
-cd ../
+`cd ../`
 
-cd ./frontend
+`cd ./frontend`
 
-npm install
-
+`npm install`
 
 START SERVER:
 
-npm start
+`cd ./server` - *call from parent directory*
+
+`npm start`
 
 RUN CLIENT:
 
-cd ./frontend
+`cd ./frontend` - *call from parent directory*
 
-npm start
+`npm start`
 
 
 # Setup Postgresql
 
 Install it locally: https://blog.logrocket.com/nodejs-expressjs-postgresql-crud-rest-api-example/#creatingapostgresqldatabase
 
-psql postgres
+`psql postgres`
 
-CREATE ROLE admin WITH LOGIN PASSWORD 'password';
+`CREATE ROLE admin WITH LOGIN PASSWORD 'password'<b>;</b>`
 
-ALTER ROLE admin CREATEDB;
+`ALTER ROLE admin CREATEDB;`
 
-\q
+`\q`
 
-psql -d postgres -U me
+`psql -d postgres -U admin`
 
-CREATE DATABASE spp;
+`CREATE DATABASE spp`
+
+###psql arguments:
+-d *databasename* - database name to connect to </p>
+-U *user* - database user name </p>
+\q - quit from session </p>
