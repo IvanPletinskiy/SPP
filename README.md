@@ -4,7 +4,7 @@ SETUP:
 
 npm install
 
-cd ./sever
+cd ./server
 
 npm install
 
@@ -16,6 +16,8 @@ npm install
 
 
 START SERVER:
+
+cd ./server
 
 npm start
 
