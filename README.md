@@ -17,8 +17,6 @@ npm install
 
 START SERVER:
 
-cd ./server
-
 npm start
 
 RUN CLIENT:
