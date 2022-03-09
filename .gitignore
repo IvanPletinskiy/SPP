@@ -11,3 +11,4 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 /.idea/.gitignore
+/server/node_modules/
