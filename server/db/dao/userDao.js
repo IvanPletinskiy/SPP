@@ -7,21 +7,8 @@ const pool = new Pool({
     port: 5432,
 })
 
-// pool.query("DROP TABLE users");
-//TODO
-pool.query('CREATE TABLE IF NOT EXISTS users (\n' +
-    '\tuser_id serial PRIMARY KEY,\n' +
-    '\tusername VARCHAR ( 50 ) UNIQUE NOT NULL,\n' +
-    '\tpassword VARCHAR ( 50 ) NOT NULL,\n' +
-    '\temail VARCHAR ( 255 ) UNIQUE NOT NULL,\n' +
-    '\tcreated_on VARCHAR ( 255 ),\n' +
-    '        last_login TIMESTAMP \n' +
-    ');');
-//TODO
-//pool.query("INSERT INTO users (username, password, email, created_on) VALUES ('username', 'password', 'email', 'created_on')")
-
 const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users ORDER BY user_id ASC', (error, results) => {
+    pool.query('SELECT * FROM "User" ORDER BY user_id', (error, results) => {
         if (error) {
             throw error
         }
@@ -32,7 +19,7 @@ const getUsers = (request, response) => {
 const getUserById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM "User" WHERE user_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -41,9 +28,11 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
-    const {name, email} = request.body
+    //TODO password encodign
+    let {login, password} = request.body
+    password+='1231231231'
 
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+    pool.query('INSERT INTO "User" (user_login, user_password) VALUES ($1, $2)', [login, password], (error, results) => {
         if (error) {
             throw error
         }
@@ -53,11 +42,11 @@ const createUser = (request, response) => {
 
 const updateUser = (request, response) => {
     const id = parseInt(request.params.id)
-    const {name, email} = request.body
-
+    let {login, password} = request.body
+    password+='1231231231'
     pool.query(
-        'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-        [name, email, id],
+        'UPDATE "User" SET user_login = $1, user_password = $2 WHERE user_id = $3',
+        [login, password, id],
         (error, results) => {
             if (error) {
                 throw error
@@ -70,7 +59,7 @@ const updateUser = (request, response) => {
 const deleteUser = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('DELETE FROM "User" WHERE user_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
