@@ -68,7 +68,7 @@ CREATE TABLE "User"
 	user_id serial NOT NULL,
 	user_login varchar(30) NOT NULL,
 	user_password varchar(100) NOT NULL,
-	fk_verification_id integer NOT NULL
+	fk_verification_id integer
 )
 ;
 
@@ -170,8 +170,6 @@ ALTER TABLE "User" ADD CONSTRAINT "FK_User_Verification"
 ALTER TABLE "Withdrawal" ADD CONSTRAINT "FK_Withdrawals_CryptoAccount"
 	FOREIGN KEY (fk_ca_id) REFERENCES "CryptoAccount" (ca_id) ON DELETE No Action ON UPDATE No Action
 ;
-
-/* Create Table Comments, Sequences for Autonumber Columns */
 
  
 

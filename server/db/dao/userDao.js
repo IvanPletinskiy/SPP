@@ -28,22 +28,22 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
-    //TODO password encodign
+    //TODO password encoding
     let {login, password} = request.body
-    password+='1231231231'
+    password += '1231231231'
 
-    pool.query('INSERT INTO "User" (user_login, user_password) VALUES ($1, $2)', [login, password], (error, results) => {
+    pool.query('INSERT INTO "User" (user_login, user_password) VALUES ($1, $2)', [login, password], (error, result) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User added with ID: ${result.insertId}`)
+        response.status(201).send(`User successfully added`)
     })
 }
 
 const updateUser = (request, response) => {
     const id = parseInt(request.params.id)
     let {login, password} = request.body
-    password+='1231231231'
+    password += '1231231231'
     pool.query(
         'UPDATE "User" SET user_login = $1, user_password = $2 WHERE user_id = $3',
         [login, password, id],

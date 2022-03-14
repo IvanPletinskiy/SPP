@@ -9,15 +9,11 @@ const pool = new Pool({
 
 const fs = require('fs');
 const path = require("path");
+
 const tablesSql = fs.readFileSync(path.resolve(__dirname, "tables.sql")).toString();
 
 const configurateDatabase = pool.query(tablesSql)
 
-const testDataSql = fs.readFileSync(path.resolve(__dirname, "testData.sql")).toString();
-
-const fillDatabaseWithData = pool.query(testDataSql)
-
 module.exports = {
-    configurateDatabase,
-    fillDatabaseWithData
+    configurateDatabase
 }
