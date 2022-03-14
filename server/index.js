@@ -1,7 +1,7 @@
 // server/index.js
 const express = require("express");
 // const bodyParser = require('body-parser')
-
+//
 const cryptoAccountDao = require('./db/dao/cryptoAccountDao')
 const cryptocurrencyDao = require('./db/dao/cryptocurrencyDao')
 const topupDao = require('./db/dao/topupDao')
@@ -38,5 +38,6 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     // database configuration if needed
     // require('./db/localDB/tablesConfig').configurateDatabase
+    require('./db/localDB/tablesConfig').fillDatabaseWithData
     console.log(`Server listening on ${PORT}`);
 });
