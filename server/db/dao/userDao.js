@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 const getUsers = (request, response) => {
-    pool.query('SELECT * FROM "User" ORDER BY user_id', (error, results) => {
+    pool.query('SELECT * FROM "User" ORDER BY us_id', (error, results) => {
         if (error) {
             throw error
         }
@@ -19,7 +19,7 @@ const getUsers = (request, response) => {
 const getUserById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM "User" WHERE user_id = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM "User" WHERE us_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -32,11 +32,11 @@ const createUser = (request, response) => {
     let {login, password} = request.body
     password += '1231231231'
 
-    pool.query('INSERT INTO "User" (user_login, user_password) VALUES ($1, $2)', [login, password], (error, result) => {
+    pool.query('INSERT INTO "User" (us_login, us_password) VALUES ($1, $2)', [login, password], (error, result) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User successfully added`)
+        response.status(201).send(`User added with id ${result.insertId}`)
     })
 }
 
@@ -45,7 +45,7 @@ const updateUser = (request, response) => {
     let {login, password} = request.body
     password += '1231231231'
     pool.query(
-        'UPDATE "User" SET user_login = $1, user_password = $2 WHERE user_id = $3',
+        'UPDATE "User" SET us_login = $1, us_password = $2 WHERE us_id = $3',
         [login, password, id],
         (error, results) => {
             if (error) {
@@ -59,7 +59,7 @@ const updateUser = (request, response) => {
 const deleteUser = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM "User" WHERE user_id = $1', [id], (error, results) => {
+    pool.query('DELETE FROM "User" WHERE us_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }

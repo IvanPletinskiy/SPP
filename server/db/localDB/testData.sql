@@ -12,13 +12,13 @@ VALUES ('Vann', 'Nnnnn', 'photos/vn.png', 'MP12312332UKR7203305F1235568BR123123A
 INSERT INTO "Verification"(ve_name, ve_surname, ve_photo_url, ve_passport_code, ve_phone_number)
 VALUES ('Aaaaa', 'Sssss', 'photos/as.png', 'ZS12312232BLR7203305F1235568BR123123A01PB645', '375294572377');
 
-INSERT INTO "User"(user_login, user_password, fk_verification_id)
+INSERT INTO "User"(us_login, us_password, fk_verification_id)
 VALUES ('login1', 'pas325124!213sword1', 1);
-INSERT INTO "User"(user_login, user_password, fk_verification_id)
+INSERT INTO "User"(us_login, us_password, fk_verification_id)
 VALUES ('login2002', 'pass!23131$word2', 2);
-INSERT INTO "User"(user_login, user_password, fk_verification_id)
+INSERT INTO "User"(us_login, us_password, fk_verification_id)
 VALUES ('logqwein', 'password1231Qwexa3', 3);
-INSERT INTO "User"(user_login, user_password, fk_verification_id)
+INSERT INTO "User"(us_login, us_password, fk_verification_id)
 VALUES ('123login41241w', 'passworqweqweqdqe1241xa4', 4);
 
 INSERT INTO "CryptoAccount"(ca_number, ca_amount, ca_last_update, fk_user_id, fk_cc_id)
@@ -56,6 +56,3 @@ INSERT INTO "Transaction"(tr_amount_from, tr_amount_to, tr_datetime, fk_account_
 VALUES (100, 23, '2017-03-06 11:21:40+02', 3, 4);
 INSERT INTO "Transaction"(tr_amount_from, tr_amount_to, tr_datetime, fk_account_from, fk_account_to)
 VALUES (1050, 123, '2018-03-04 11:21:40+02', 2, 4);
-
-
-

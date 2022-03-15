@@ -54,7 +54,7 @@ CREATE TABLE "Topup"
 
 CREATE TABLE "Transaction"
 (
-	transaction_id bigserial NOT NULL,
+	tr_id bigserial NOT NULL,
 	tr_amount_from money NOT NULL,
 	tr_amount_to money NOT NULL,
 	tr_datetime time with time zone NOT NULL,
@@ -65,16 +65,16 @@ CREATE TABLE "Transaction"
 
 CREATE TABLE "User"
 (
-	user_id serial NOT NULL,
-	user_login varchar(30) NOT NULL,
-	user_password varchar(100) NOT NULL,
-	fk_verification_id integer
+	us_id serial NOT NULL,
+	us_login varchar(30) NOT NULL,
+	us_password varchar(100) NOT NULL,
+	fk_verification_id integer NULL
 )
 ;
 
 CREATE TABLE "Verification"
 (
-	verification_id serial NOT NULL,
+	ve_id serial NOT NULL,
 	ve_name varchar(20) NOT NULL,
 	ve_surname varchar(20) NOT NULL,
 	ve_photo_url varchar(100) NULL,
@@ -115,7 +115,7 @@ CREATE INDEX "IXFK_Topup_CryptoAccount" ON "Topup" (fk_ac_id ASC)
 ;
 
 ALTER TABLE "Transaction" ADD CONSTRAINT "PK_Transaction"
-	PRIMARY KEY (transaction_id)
+	PRIMARY KEY (tr_id)
 ;
 
 CREATE INDEX "IXFK_Transaction_CryptoAccount" ON "Transaction" (fk_account_from ASC)
@@ -125,14 +125,14 @@ CREATE INDEX "IXFK_Transaction_CryptoAccount_02" ON "Transaction" (fk_account_to
 ;
 
 ALTER TABLE "User" ADD CONSTRAINT "PK_User"
-	PRIMARY KEY (user_id)
+	PRIMARY KEY (us_id)
 ;
 
 CREATE INDEX "IXFK_User_Verification" ON "User" (fk_verification_id ASC)
 ;
 
 ALTER TABLE "Verification" ADD CONSTRAINT "PK_Verification"
-	PRIMARY KEY (verification_id)
+	PRIMARY KEY (ve_id)
 ;
 
 CREATE INDEX "IX_PassportCode" ON "Verification" (ve_passport_code ASC)
@@ -148,7 +148,7 @@ CREATE INDEX "IXFK_Withdrawals_CryptoAccount" ON "Withdrawal" (fk_ca_id ASC)
 /* Create Foreign Key Constraints */
 
 ALTER TABLE "CryptoAccount" ADD CONSTRAINT "FK_CryptoAccount_User"
-	FOREIGN KEY (fk_user_id) REFERENCES "User" (user_id) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY (fk_user_id) REFERENCES "User" (us_id) ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "Topup" ADD CONSTRAINT "FK_Topup_CryptoAccount"
@@ -164,7 +164,7 @@ ALTER TABLE "Transaction" ADD CONSTRAINT "FK_Transaction_CryptoAccount_02"
 ;
 
 ALTER TABLE "User" ADD CONSTRAINT "FK_User_Verification"
-	FOREIGN KEY (fk_verification_id) REFERENCES "Verification" (verification_id) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY (fk_verification_id) REFERENCES "Verification" (ve_id) ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "Withdrawal" ADD CONSTRAINT "FK_Withdrawals_CryptoAccount"

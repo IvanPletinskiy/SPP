@@ -1,5 +1,3 @@
-const fs = require("fs");
-const path = require("path");
 const Pool = require('pg').Pool
 const pool = new Pool({
     user: 'admin',
@@ -10,7 +8,6 @@ const pool = new Pool({
 })
 
 const getAllCryptocurrencies = (request, response) => {
-    console.log('qwe')
     pool.query('SELECT * FROM "Cryptocurrency" ORDER BY cc_id', (error, results) => {
         console.log(results)
         if (error) {
@@ -26,7 +23,7 @@ const createCryptocurrency = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(201).send(`Cryptocurrency added`)
+            response.status(201).send(`Cryptocurrency added ${result.insertId}`)
         })
 }
 

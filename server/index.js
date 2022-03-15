@@ -21,22 +21,24 @@ app.get("/api", (req, res) => {
 
 app.get('/users', usersDao.getUsers)
 app.get('/users/:id', usersDao.getUserById)
-app.post('/users', usersDao.createUser)
-app.put('/users/:id', usersDao.updateUser)
+app.put('/users', usersDao.createUser)
+app.post('/users/:id', usersDao.updateUser)
 app.delete('/users/:id', usersDao.deleteUser)
 
 app.get('/accounts', cryptoAccountDao.getAllCryptoAccounts)
 app.get('/cryptocurrencies', cryptocurrencyDao.getAllCryptocurrencies)
-app.post('/cryptocurrency', cryptocurrencyDao.createCryptocurrency)
+app.put('/cryptocurrency', cryptocurrencyDao.createCryptocurrency)
 app.get('/topups', topupDao.getAllTopups)
 app.get('/transactions', transactionDao.getAllTransactions)
 app.get('/verifications', verificationDao.getAllVerifications)
 app.get('/withdrawals', withdrawalDao.getAllWithdrawals)
 
+app.put('/fillData', require('./db/localDB/tablesConfig').addTestData)
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     // database configuration if needed
-    // require('./db/localDB/tablesConfig').configurateDatabase
+    require('./db/localDB/tablesConfig').configureDatabase()
     console.log(`Server listening on ${PORT}`);
 });
