@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 const getAllTransactions = (request, response) => {
-    pool.query('SELECT * FROM "Transaction" ORDER BY transaction_id ASC', (error, results) => {
+    pool.query('SELECT * FROM "Transaction" ORDER BY tr_id ASC', (error, results) => {
         if (error) {
             throw error
         }

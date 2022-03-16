@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 const getAllVerifications = (request, response) => {
-    pool.query('SELECT * FROM "Verification" ORDER BY verification_id ASC', (error, results) => {
+    pool.query('SELECT * FROM "Verification" ORDER BY ve_id ASC', (error, results) => {
         if (error) {
             throw error
         }

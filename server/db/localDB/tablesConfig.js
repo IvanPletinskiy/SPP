@@ -24,7 +24,7 @@ const addTestData =  (request, response) =>  {
             throw error
         }
         console.log(result)
-        response.status(201).send(`Rows added ${result.length}`)
+        // response.status(201).send(`Rows added ${result.length}`)
     })
 
 }

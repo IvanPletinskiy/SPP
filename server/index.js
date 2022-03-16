@@ -39,6 +39,7 @@ app.put('/fillData', require('./db/localDB/tablesConfig').addTestData)
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     // database configuration if needed
-    require('./db/localDB/tablesConfig').configureDatabase()
+    // require('./db/localDB/tablesConfig').configureDatabase()
+    require('./db/localDB/tablesConfig').addTestData()
     console.log(`Server listening on ${PORT}`);
 });
