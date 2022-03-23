@@ -13,12 +13,12 @@ const pool = new Pool({
 
 
 function configureDatabase() {
-    const tablesSql = fs.readFileSync(path.resolve(__dirname, "tables.sql")).toString();
+    const tablesSql = fs.readFileSync(path.resolve(__dirname, "./tables.sql")).toString();
     pool.query(tablesSql)
 }
 
 const addTestData =  (request, response) =>  {
-    const testDataSql = fs.readFileSync(path.resolve(__dirname, "testData.sql")).toString();
+    const testDataSql = fs.readFileSync(path.resolve(__dirname, "./testData.sql")).toString();
     pool.query(testDataSql,  (error, result) => {
         if (error) {
             throw error

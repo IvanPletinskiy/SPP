@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "experimentalDecorators": true,
+    "noLib": true,
+    "checkJs": true,
+    "baseUrl": "."
+  }, 
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "src/**/*.js",
+    "node_modules/@nestjs/**/*"
+  ]
+}
