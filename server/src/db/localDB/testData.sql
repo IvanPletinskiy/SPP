@@ -21,14 +21,14 @@ VALUES ('logqwein', 'password1231Qwexa3', 3);
 INSERT INTO "User"(us_login, us_password, fk_verification_id)
 VALUES ('123login41241w', 'passworqweqweqdqe1241xa4', 4);
 
-INSERT INTO "CryptoAccount"(ca_number, ca_amount, ca_last_update, fk_user_id, fk_cc_id)
-VALUES ('BY12ALFF123473JYNC2293525757AS4413', 0.0323, '2021-03-12 16:22:45+02', 1, 1);
-INSERT INTO "CryptoAccount"(ca_number, ca_amount, ca_last_update, fk_user_id, fk_cc_id)
-VALUES ('BY12AWERF1223473JYNC22525757AS4412', 4.00023, '2020-03-02 18:22:45+03', 1, 2);
-INSERT INTO "CryptoAccount"(ca_number, ca_amount, ca_last_update, fk_user_id, fk_cc_id)
-VALUES ('RU12AWERF1223473JYNC22525757AS4412', 1.00023, '2014-04-10 05:22:45+04', 2, 3);
-INSERT INTO "CryptoAccount"(ca_number, ca_amount, ca_last_update, fk_user_id, fk_cc_id)
-VALUES ('RU12AWERF1223473JYNC22522257RD4412', 1.02123, '2019-04-06 05:22:55+05', 4, 4);
+INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
+VALUES ('BY12ALFF123473JYNC2293525757AS4413', 0.0323, 1, 1);
+INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
+VALUES ('BY12AWERF1223473JYNC22525757AS4412', 4.00023, 1, 2);
+INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
+VALUES ('RU12AWERF1223473JYNC22525757AS4412', 1.00023, 2, 3);
+INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
+VALUES ('RU12AWERF1223473JYNC22522257RD4412', 1.02123, 4, 4);
 
 INSERT INTO "Topup"(to_fiat_iban, to_fiat_amount, to_cryptocurrency_amount, to_datetime, fk_ac_id)
 VALUES ('BY12ALFF123473JYNC2293525757AS4411', 250, 0.003, '2015-03-02 11:21:40+02', 1);

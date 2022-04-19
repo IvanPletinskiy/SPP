@@ -3,7 +3,6 @@ import bootstrapSubApp from './nestApp/boot'
 
 const express = require("express");
 const bodyParser = require('body-parser')
-const cryptoAccountDao = require('./db/dao/cryptoAccountDao')
 const cryptocurrencyDao = require('./db/dao/cryptocurrencyDao')
 const topupDao = require('./db/dao/topupDao')
 const transactionDao = require('./db/dao/transactionDao')
@@ -22,7 +21,6 @@ mountSubApp(app, '/', bootstrapSubApp)
         app.post('/users/:id', usersDao.updateUser)
         app.delete('/users/:id', usersDao.deleteUser)
 
-        app.get('/accounts', cryptoAccountDao.getAllCryptoAccounts)
         app.get('/cryptocurrencies', cryptocurrencyDao.getAllCryptocurrencies)
         app.put('/cryptocurrency', cryptocurrencyDao.createCryptocurrency)
         app.get('/topups', topupDao.getAllTopups)
