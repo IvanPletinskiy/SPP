@@ -26,7 +26,6 @@ const addTestData =  (request, response) =>  {
         console.log(result)
         // response.status(201).send(`Rows added ${result.length}`)
     })
-
 }
 
 module.exports = {

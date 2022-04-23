@@ -26,7 +26,6 @@ CREATE TABLE "CryptoAccount"
 	ca_id bigserial NOT NULL,
 	ca_number varchar(34) NOT NULL,
 	ca_amount money NOT NULL,
-	ca_last_update time with time zone NOT NULL,
 	fk_user_id integer NOT NULL,
 	fk_cc_id integer NULL
 )
