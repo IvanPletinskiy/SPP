@@ -13,7 +13,14 @@ export default function AccountsList(accounts, navigate) {
                     buttons = <div>
                         <button
                             onClick={() => {
-                                navigate("/buy");
+                                navigate("/buy", {
+                                    state: {
+                                        ca_id: account.ca_id,
+                                        ca_number: account.ca_number,
+                                        fk_cc_id: account.fk_cc_id,
+                                        fk_user_id: account.fk_user_id
+                                    }
+                                });
                             }}
                         >Купить
                         </button>

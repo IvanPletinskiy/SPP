@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {Account} from "./Account";
+import {Account} from "../entities/Account";
 
 const Pool = require('pg').Pool
 const pool = new Pool({
@@ -14,6 +14,15 @@ const pool = new Pool({
 export class AccountsRepository {
     async getAllAccounts() {
         const results = await pool.query('SELECT * FROM "CryptoAccount" ORDER BY ca_id ASC')
+        const accounts = results.rows.map((row) => {
+            return new Account(row.ca_id, row.ca_number, row.ca_amount, row.fk_user_id, row.fk_cc_id)
+        });
+
+        return accounts
+    }
+
+    async getAccountsByUserId(userId) {
+        const results = await pool.query('SELECT * FROM "CryptoAccount" WHERE fk_user_id = $1 ORDER BY ca_id ASC', [userId])
         const accounts = results.rows.map((row) => {
             return new Account(row.ca_id, row.ca_number, row.ca_amount, row.fk_user_id, row.fk_cc_id)
         });
