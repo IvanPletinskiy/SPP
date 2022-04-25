@@ -2,15 +2,17 @@ import {render} from "react-dom";
 import {
     BrowserRouter,
     Routes,
-    Route,
+    Route, useNavigate,
 } from "react-router-dom";
 import App from "./App";
+import BuyScreen from "./routes/buy/BuyScreen";
 
 const rootElement = document.getElementById("root");
 render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>}/>
+            <Route path="/buy" element={<BuyScreen/>}/>
         </Routes>
     </BrowserRouter>,
     rootElement

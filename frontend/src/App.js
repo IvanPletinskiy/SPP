@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import AccountsList from "./components/AccountsList";
+import {useNavigate} from "react-router-dom";
 
 function App() {
     const [users, setUsers] = React.useState(null);
@@ -52,11 +53,13 @@ function App() {
             .then((withdrawals) => setWithdrawals(withdrawals))
     }, []);
 
+    let navigate = useNavigate();
     return (
         <div className="App">
             <header className="">
                 <div>
-                    {!accounts ? "" : <AccountsList accounts={accounts}/>}
+                    {/*{!accounts ? "" : <AccountsList accounts={accounts}/>}*/}
+                    {!accounts ? "" : <div>{AccountsList(accounts, navigate)}</div>}
                 </div>
 
             </header>

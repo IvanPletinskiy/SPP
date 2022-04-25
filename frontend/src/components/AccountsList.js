@@ -1,10 +1,8 @@
 import React from "react";
 import {getCurrencyNameById, isFiat} from "../utils/CryptoUtils";
 
-class AccountsList extends React.Component {
-
-    render() {
-        return this.props.accounts.map(account => {
+export default function AccountsList(accounts, navigate) {
+    return (accounts.map(account => {
                 var buttons;
                 if (isFiat(account.fk_cc_id)) {
                     buttons = <div>
@@ -13,7 +11,19 @@ class AccountsList extends React.Component {
                     </div>
                 } else {
                     buttons = <div>
-                        <button>Купить</button>
+                        <button
+                            onClick={() => {
+                                navigate("/buy", {
+                                    state: {
+                                        ca_id: account.ca_id,
+                                        ca_number: account.ca_number,
+                                        fk_cc_id: account.fk_cc_id,
+                                        fk_user_id: account.fk_user_id
+                                    }
+                                });
+                            }}
+                        >Купить
+                        </button>
                     </div>
                 }
                 return (
@@ -26,7 +36,5 @@ class AccountsList extends React.Component {
                 )
             }
         )
-    }
+    )
 }
-
-export default AccountsList;
