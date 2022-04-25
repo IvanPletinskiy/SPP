@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/src/index.js"
+    "start": "node server/src/index.js",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.5"
   },
   "keywords": [],
   "author": "",

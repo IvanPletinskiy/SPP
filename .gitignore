@@ -14,3 +14,8 @@
 /server/node_modules/
 /server/dist/
 /.idea/inspectionProfiles/Project_Default.xml
+
+#file with dependencies installed from package.json
+/frontend/package-lock.json
+/server/package-lock.json
+/package-lock.json
