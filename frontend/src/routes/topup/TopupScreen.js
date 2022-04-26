@@ -11,7 +11,7 @@ function TopupScreen() {
     const {ca_id, ca_number, fk_cc_id} = state; // Read values passed on state
 
     const targetAccountText = ca_number + " " + getCurrencyNameById(fk_cc_id)
-    const [youWillBuyText, setYouWillBuyText] = useState("");
+    const [youWillTopupText, setYouWillTopupText] = useState("");
 
     console.log(state)
 
@@ -23,9 +23,9 @@ function TopupScreen() {
         <h5>Введите количество:</h5>
         <input type="number" value={amount} onChange={event => {
             setAmount(event.target.value)
-            setYouWillBuyText(event.target.value + " $")
+            setYouWillTopupText(event.target.value + " $")
         }}/>
-        <h5>Вы пополните на: {youWillBuyText}</h5>
+        <h5>Вы пополните на: {youWillTopupText}</h5>
         <button onClick={() => {
             const requestOptions = {
                 method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
