@@ -1,17 +1,31 @@
 import React from "react";
 import {getCurrencyNameById, isFiat} from "../utils/CryptoUtils";
+import styled from "styled-components";
 
-export default function AccountsList(accounts, navigate) {
-    return (accounts.map(account => {
+
+
+function AccountsList(accounts, navigate) {
+    return (
+        <div>
+            <Button onClick={() => navigate('/createAccount')}>Открыть счет</Button>
+            <div>{Accounts(accounts, navigate)}</div>
+        </div>
+    )
+
+}
+
+function Accounts(accounts, navigate){
+    return (
+        accounts.map(account => {
                 var buttons;
                 if (isFiat(account.fk_cc_id)) {
                     buttons = <div>
-                        <button>Пополнить</button>
-                        <button>Вывести</button>
+                        <Button>Пополнить</Button>
+                        <Button>Вывести</Button>
                     </div>
                 } else {
                     buttons = <div>
-                        <button
+                        <Button
                             onClick={() => {
                                 navigate("/buy", {
                                     state: {
@@ -23,7 +37,7 @@ export default function AccountsList(accounts, navigate) {
                                 });
                             }}
                         >Купить
-                        </button>
+                        </Button>
                     </div>
                 }
                 return (
@@ -38,3 +52,15 @@ export default function AccountsList(accounts, navigate) {
         )
     )
 }
+
+const Button = styled.button`
+  background-color: #e2ffa1;
+  color: #443838;
+  font-size: 15px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+`;
+
+export default AccountsList;

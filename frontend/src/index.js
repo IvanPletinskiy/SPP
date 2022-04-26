@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import BuyScreen from "./routes/buy/BuyScreen";
+import CreateAccount from "./routes/account/CreateAccount";
 
 const rootElement = document.getElementById("root");
 render(
@@ -13,6 +14,7 @@ render(
         <Routes>
             <Route path="/" element={<App/>}/>
             <Route path="/buy" element={<BuyScreen/>}/>
+            <Route path="/createAccount" element={<CreateAccount/>}/>
         </Routes>
     </BrowserRouter>,
     rootElement
