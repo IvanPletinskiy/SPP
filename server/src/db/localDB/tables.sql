@@ -83,8 +83,6 @@ CREATE TABLE "Verification"
 CREATE TABLE "Withdrawal"
 (
 	wi_id bigserial NOT NULL,
-	wi_iban varchar(34) NOT NULL,
-	wi_cryptocurrency_amount money NOT NULL,
 	wi_fiat_amount money NOT NULL,
 	wi_datetime time with time zone NOT NULL,
 	fk_ca_id bigint NOT NULL
