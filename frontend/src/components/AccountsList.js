@@ -6,7 +6,16 @@ export default function AccountsList(accounts, navigate) {
                 var buttons;
                 if (isFiat(account.fk_cc_id)) {
                     buttons = <div>
-                        <button>Пополнить</button>
+                        <button
+                            onClick={() => {
+                                navigate("/topup", {
+                                    state: {
+                                        ca_id: account.ca_id,
+                                        ca_number: account.ca_number,
+                                        fk_cc_id: account.fk_cc_id
+                                    }
+                                })
+                            }}>Пополнить</button>
                         <button>Вывести</button>
                     </div>
                 } else {
