@@ -6,10 +6,11 @@ import {AccountsRepository} from "../db/repositories/AccountsRepository";
 import {CurrenciesRepository} from "../db/repositories/CurrenciesRepository";
 import {BuyController} from "./buy/BuyController";
 import {TransactionsRepository} from "../db/repositories/TransactionsRepository";
+import {CurrenciesController} from "./currencies/CurrenciesController";
 
 @Module({
     imports: [],
-    controllers: [SubAppController, AccountsController, BuyController],
+    controllers: [SubAppController, AccountsController,CurrenciesController, BuyController],
     providers: [SubAppService, AccountsRepository, CurrenciesRepository, TransactionsRepository]
 })
 export class SubAppModule {
