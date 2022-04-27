@@ -5,7 +5,8 @@ import {
     Route, useNavigate,
 } from "react-router-dom";
 import App from "./App";
-import BuyScreen from "./routes/buy/BuyScreen"
+import BuyScreen from "./routes/buy/BuyScreen";
+import CreateAccount from "./routes/account/CreateAccount";
 import TopupScreen from "./routes/topup/TopupScreen";
 
 const rootElement = document.getElementById("root");
@@ -14,6 +15,7 @@ render(
         <Routes>
             <Route path="/" element={<App/>}/>
             <Route path="/buy" element={<BuyScreen/>}/>
+            <Route path="/createAccount" element={<CreateAccount/>}/>
             <Route path="/topup" element={<TopupScreen/>}/>
         </Routes>
     </BrowserRouter>,

@@ -10,6 +10,8 @@ const pool = new Pool({
     port: 5432,
 })
 
+var crypto = require("crypto");
+
 @Injectable()
 export class AccountsRepository {
     async getAllAccounts() {
@@ -29,4 +31,22 @@ export class AccountsRepository {
 
         return accounts
     }
+
+    async createNewAccount(account) {
+        let number = crypto.randomBytes(20).toString('hex').substring(0, 20)
+        const ca_number = String(number)
+        const ca_amount = Number(0)
+        const fk_user_id = Number(account.user)
+        const fk_cc_id = Number(account.currency)
+        const values = [ca_number, ca_amount, fk_user_id, fk_cc_id];
+        console.log("Repo create Account:")
+        console.log(values)
+
+        const query = 'INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id) VALUES ($1, $2, $3, $4)';
+        const newAccount = await pool.query(query, values)
+
+        return newAccount
+    }
+
+
 }

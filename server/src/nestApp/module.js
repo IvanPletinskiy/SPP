@@ -7,11 +7,12 @@ import {AccountsRepository} from "../db/repositories/AccountsRepository";
 import {CurrenciesRepository} from "../db/repositories/CurrenciesRepository";
 import {BuyController} from "./buy/BuyController";
 import {TransactionsRepository} from "../db/repositories/TransactionsRepository";
+import {CurrenciesController} from "./currencies/CurrenciesController";
 import {TopupsRepository} from '../db/repositories/TopupsRepository';
 
 @Module({
     imports: [],
-    controllers: [SubAppController, AccountsController, BuyController, TopupsController],
+    controllers: [SubAppController, AccountsController, CurrenciesController, BuyController, TopupsController],
     providers: [SubAppService, AccountsRepository, CurrenciesRepository, TransactionsRepository, TopupsRepository]
 })
 export class SubAppModule {
