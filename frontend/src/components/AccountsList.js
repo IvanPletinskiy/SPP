@@ -20,7 +20,16 @@ function Accounts(accounts, navigate){
                 var buttons;
                 if (isFiat(account.fk_cc_id)) {
                     buttons = <div>
-                        <Button>Пополнить</Button>
+                        <Button
+                            onClick={() => {
+                                navigate("/topup", {
+                                    state: {
+                                        ca_id: account.ca_id,
+                                        ca_number: account.ca_number,
+                                        fk_cc_id: account.fk_cc_id
+                                    }
+                                })
+                            }}>Пополнить</Button>
                         <Button>Вывести</Button>
                     </div>
                 } else {
