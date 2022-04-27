@@ -13,6 +13,8 @@ function WithdrawalScreen() {
     const targetAccountText = ca_number + " " + getCurrencyNameById(fk_cc_id)
     const [youWillWithdrawalText, setYouWillWithdrawalText] = useState("");
 
+    const [errorMessage, setErrorMessage] = useState("");
+
     console.log(state)
 
     return (<div>
@@ -36,10 +38,17 @@ function WithdrawalScreen() {
             };
 
             fetch('/withdrawals', requestOptions)
-                .then(response => navigate(-1))
+                .then(response => {
+                    if (response.status == 200) {
+                        navigate(-1)
+                    } else if (response.status == 400) {
+                        setErrorMessage("Невозможно совершить вывод")
+                    }
+                })
         }
 
         }>Вывести</button>
+        <h6 style={{color: 'red'}}>{errorMessage}</h6>
 
     </div>)
 }

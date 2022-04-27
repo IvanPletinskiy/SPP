@@ -17,7 +17,11 @@ function Accounts(navigate) {
     React.useEffect(() => {
         fetch("/accounts")
             .then((res) => res.json())
-            .then((accounts) => setAccounts(accounts))
+            .then((accounts) => {
+                setAccounts(accounts)
+                console.log("Accounts:")
+                console.log(accounts)
+            })
     }, []);
     return (
         !accounts ? "" :

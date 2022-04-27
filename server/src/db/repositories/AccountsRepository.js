@@ -48,5 +48,18 @@ export class AccountsRepository {
         return newAccount
     }
 
+    async updateAccountBalance(accountId, newBalance) {
+        console.log("accountId:" + accountId + " newBalance: " + newBalance)
+        const results = await pool.query('UPDATE "CryptoAccount" SET ca_amount = $1 WHERE ca_id = $2', [newBalance, accountId])
 
+        console.log(await this.getAllAccounts())
+
+        return results
+    }
+
+    async getAccountById(accountId) {
+        const results = await pool.query('SELECT * FROM "CryptoAccount" WHERE ca_id = $1 LIMIT 1', [accountId])
+        let row = results.rows[0]
+        return new Account(row.ca_id, row.ca_number, row.ca_amount, row.fk_user_id, row.fk_cc_id)
+    }
 }
