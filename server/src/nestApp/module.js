@@ -8,12 +8,13 @@ import {AccountsRepository} from "../db/repositories/AccountsRepository";
 import {CurrenciesRepository} from "../db/repositories/CurrenciesRepository";
 import {BuyController} from "./buy/BuyController";
 import {TransactionsRepository} from "../db/repositories/TransactionsRepository";
+import {CurrenciesController} from "./currencies/CurrenciesController";
 import {TopupsRepository} from '../db/repositories/TopupsRepository';
 import {WithdrawalsRepository} from '../db/repositories/WithdrawalsRepository';
 
 @Module({
     imports: [],
-    controllers: [SubAppController, AccountsController, BuyController, TopupsController, WithdrawalsController],
+    controllers: [SubAppController, AccountsController, CurrenciesController, BuyController, TopupsController, WithdrawalsController],
     providers: [SubAppService, AccountsRepository, CurrenciesRepository, TransactionsRepository, TopupsRepository, WithdrawalsRepository]
 })
 export class SubAppModule {
