@@ -16,7 +16,7 @@ export class CurrenciesRepository {
     async getAllCurrencies() {
         const results = await pool.query('SELECT * FROM "Cryptocurrency" ORDER BY cc_id')
         const currencies = results.rows.map((row) => {
-                return new Currency(row.cc_id, row.cc_code, row.cc_name, row.cc_description)
+                return new Currency(row.cc_id, row.cc_code, row.cc_name, row.cc_description, row.cc_usd_price)
             }
         )
         return currencies
@@ -25,7 +25,7 @@ export class CurrenciesRepository {
     async getCurrencyById(id) {
         const results = await pool.query('SELECT * FROM "Cryptocurrency" WHERE cc_id = $1 ORDER BY cc_id LIMIT 1', [id])
         const currencies = results.rows.map((row) => {
-                return new Currency(row.cc_id, row.cc_code, row.cc_name, row.cc_description)
+                return new Currency(row.cc_id, row.cc_code, row.cc_name, row.cc_description, row.cc_usd_price)
             }
         )
         return currencies

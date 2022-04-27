@@ -1,7 +1,9 @@
-INSERT INTO "Cryptocurrency"(cc_code, cc_name) VALUES ('BTC', 'Bitcoin');
-INSERT INTO "Cryptocurrency"(cc_code, cc_name) VALUES ('ETH', 'Ethereum');
-INSERT INTO "Cryptocurrency"(cc_code, cc_name) VALUES ('USDT', 'Tether');
-INSERT INTO "Cryptocurrency"(cc_code, cc_name) VALUES ('BNB', 'BNB');
+INSERT INTO "Cryptocurrency"(cc_code, cc_name, cc_usd_price) VALUES ('USD', 'US Dollar', 1.0);
+INSERT INTO "Cryptocurrency"(cc_code, cc_name, cc_usd_price) VALUES ('BTC', 'Bitcoin', 40000.0);
+INSERT INTO "Cryptocurrency"(cc_code, cc_name, cc_usd_price) VALUES ('ETH', 'Ethereum', 3000.0);
+INSERT INTO "Cryptocurrency"(cc_code, cc_name, cc_usd_price) VALUES ('USDT', 'Tether', 1.0);
+INSERT INTO "Cryptocurrency"(cc_code, cc_name, cc_usd_price) VALUES ('BNB', 'BNB', 200.0);
+INSERT INTO "Cryptocurrency"(cc_code, cc_name, cc_usd_price) VALUES ('UNI', 'Uniswap', 300.0);
 
 INSERT INTO "Verification"(ve_name, ve_surname, ve_photo_url, ve_passport_code, ve_phone_number)
 VALUES ('Vvvv', 'Kkkkkk', 'photos/vk.png', 'MP12312332BLR7203305F1235568BR123123A01PB645', '375554572366');
@@ -26,9 +28,9 @@ VALUES ('BY12ALFF123473JYNC2293525757AS4413', 0.0323, 1, 1);
 INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
 VALUES ('BY12AWERF1223473JYNC22525757AS4412', 4.00023, 1, 2);
 INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
-VALUES ('RU12AWERF1223473JYNC22525757AS4412', 1.00023, 2, 3);
+VALUES ('RU12AWERF1223473JYNC22525757AS4412', 1.00023, 1, 3);
 INSERT INTO "CryptoAccount"(ca_number, ca_amount, fk_user_id, fk_cc_id)
-VALUES ('RU12AWERF1223473JYNC22522257RD4412', 1.02123, 4, 4);
+VALUES ('RU12AWERF1223473JYNC22522257RD4412', 1.02123, 1, 4);
 
 INSERT INTO "Topup"(to_fiat_amount, to_datetime, fk_ac_id)
 VALUES (250, '2015-03-02 11:21:40+02', 1);

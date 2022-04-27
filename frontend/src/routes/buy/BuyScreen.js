@@ -31,6 +31,7 @@ function BuyScreen() {
     const [selectedOption, setSelectedOption] = useState(null);
     const targetAccountText = ca_number + " " + getCurrencyNameById(fk_cc_id)
     const [youWillBuyText, setYouWillBuyText] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     return (<div>
         <button onClick={() => {
@@ -52,7 +53,7 @@ function BuyScreen() {
             //Don't edit, we should use == and not === below
             const targetUsdValue = accounts.find((it) => it.ca_id == ca_id).usd_price
             const srcUsdValue = accounts.find((it) => it.ca_id == selectedOption.value).usd_price
-            const buyAmount = event.target.value * targetUsdValue / srcUsdValue
+            const buyAmount = event.target.value * srcUsdValue / targetUsdValue
             const targetCurrencyCode = accounts.find((it) => it.ca_id == ca_id).cc_code
             const youWillBuy = " " + buyAmount + " " + targetCurrencyCode
             setYouWillBuyText(youWillBuy)
@@ -63,7 +64,7 @@ function BuyScreen() {
             const srcUsdValue = accounts.find((it) => it.ca_id == selectedOption.value).usd_price
             const srcAmount = amount
             const targetUsdValue = accounts.find((it) => it.ca_id == ca_id).usd_price
-            const targetAmount = amount * targetUsdValue / srcUsdValue
+            const targetAmount = amount * srcUsdValue / targetUsdValue
             const srcAccountId = selectedOption.value
             const targetAccountId = ca_id
 
@@ -77,11 +78,18 @@ function BuyScreen() {
                 })
             };
             fetch('/buy', requestOptions)
-                .then(response => navigate(-1))
+                .then(response => {
+                    if (response.status == 200) {
+                        navigate(-1)
+                    } else if (response.status == 400) {
+                        setErrorMessage("Невозможно совершить покупку")
+                    }
+                })
         }
 
         }>Купить
         </button>
+        <h6 style={{color: 'red'}}>{errorMessage}</h6>
 
     </div>)
 }
