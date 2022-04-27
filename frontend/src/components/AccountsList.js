@@ -30,7 +30,16 @@ function Accounts(accounts, navigate){
                                     }
                                 })
                             }}>Пополнить</Button>
-                        <Button>Вывести</Button>
+                        <Button
+                        onClick={() => {
+                            navigate("/withdrawal", {
+                                state: {
+                                    ca_id: account.ca_id,
+                                    ca_number: account.ca_number,
+                                    fk_cc_id: account.fk_cc_id
+                                }
+                            })
+                        }}>Вывести</Button>
                     </div>
                 } else {
                     buttons = <div>

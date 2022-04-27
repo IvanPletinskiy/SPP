@@ -8,6 +8,7 @@ import App from "./App";
 import BuyScreen from "./routes/buy/BuyScreen";
 import CreateAccount from "./routes/account/CreateAccount";
 import TopupScreen from "./routes/topup/TopupScreen";
+import WithdrawalScreen from "./routes/withdrawal/WithdrawalScreen";
 
 const rootElement = document.getElementById("root");
 render(
@@ -17,6 +18,7 @@ render(
             <Route path="/buy" element={<BuyScreen/>}/>
             <Route path="/createAccount" element={<CreateAccount/>}/>
             <Route path="/topup" element={<TopupScreen/>}/>
+            <Route path="/withdrawal" element={<WithdrawalScreen/>}/>
         </Routes>
     </BrowserRouter>,
     rootElement
