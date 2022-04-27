@@ -36,7 +36,8 @@ CREATE TABLE "Cryptocurrency"
 	cc_id serial NOT NULL,
 	cc_code varchar(4) NULL,
 	cc_name varchar(20) NULL,
-	cc_description varchar(50) NULL
+	cc_description varchar(50) NULL,
+	cc_usd_price money NOT NULL
 )
 ;
 

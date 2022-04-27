@@ -3,71 +3,76 @@ import {getCurrencyNameById, isFiat} from "../utils/CryptoUtils";
 import styled from "styled-components";
 
 
-
-function AccountsList(accounts, navigate) {
+function AccountsList(navigate) {
     return (
         <div>
             <Button onClick={() => navigate('/createAccount')}>Открыть счет</Button>
-            <div>{Accounts(accounts, navigate)}</div>
+            <div>{Accounts(navigate)}</div>
         </div>
     )
-
 }
 
-function Accounts(accounts, navigate){
+function Accounts(navigate) {
+    const [accounts, setAccounts] = React.useState(null);
+    React.useEffect(() => {
+        fetch("/accounts")
+            .then((res) => res.json())
+            .then((accounts) => setAccounts(accounts))
+    }, []);
     return (
-        accounts.map(account => {
-                var buttons;
-                if (isFiat(account.fk_cc_id)) {
-                    buttons = <div>
-                        <Button
-                            onClick={() => {
-                                navigate("/topup", {
-                                    state: {
-                                        ca_id: account.ca_id,
-                                        ca_number: account.ca_number,
-                                        fk_cc_id: account.fk_cc_id
-                                    }
-                                })
-                            }}>Пополнить</Button>
-                        <Button
-                        onClick={() => {
-                            navigate("/withdrawal", {
-                                state: {
-                                    ca_id: account.ca_id,
-                                    ca_number: account.ca_number,
-                                    fk_cc_id: account.fk_cc_id
-                                }
-                            })
-                        }}>Вывести</Button>
-                    </div>
-                } else {
-                    buttons = <div>
-                        <Button
-                            onClick={() => {
-                                navigate("/buy", {
-                                    state: {
-                                        ca_id: account.ca_id,
-                                        ca_number: account.ca_number,
-                                        fk_cc_id: account.fk_cc_id,
-                                        fk_user_id: account.fk_user_id
-                                    }
-                                });
-                            }}
-                        >Купить
-                        </Button>
-                    </div>
+        !accounts ? "" :
+            accounts.map(account => {
+                    var buttons;
+                    if (isFiat(account.fk_cc_id)) {
+                        buttons = <div>
+                            <Button
+                                onClick={() => {
+                                    navigate("/topup", {
+                                        state: {
+                                            ca_id: account.ca_id,
+                                            ca_number: account.ca_number,
+                                            fk_cc_id: account.fk_cc_id
+                                        }
+                                    })
+                                }}>Пополнить</Button>
+                            <Button
+                                onClick={() => {
+                                    navigate("/withdrawal", {
+                                        state: {
+                                            ca_id: account.ca_id,
+                                            ca_number: account.ca_number,
+                                            fk_cc_id: account.fk_cc_id
+                                        }
+                                    })
+                                }}>Вывести</Button>
+                        </div>
+                    } else {
+                        buttons = <div>
+                            <Button
+                                onClick={() => {
+                                    navigate("/buy", {
+                                        state: {
+                                            ca_id: account.ca_id,
+                                            ca_number: account.ca_number,
+                                            fk_cc_id: account.fk_cc_id,
+                                            fk_user_id: account.fk_user_id
+                                        }
+                                    });
+                                }}
+                            >Купить
+                            </Button>
+                        </div>
+                    }
+                    return (
+                        <div>
+                            <h5>{account.ca_number}</h5>
+                            <h6>{getCurrencyNameById(account.fk_cc_id)}</h6>
+                            <h6>{account.ca_amount}</h6>
+                            <div>{buttons}</div>
+                        </div>
+                    )
                 }
-                return (
-                    <div>
-                        <h5>{account.ca_number}</h5>
-                        <h6>{getCurrencyNameById(account.fk_cc_id)}</h6>
-                        <h6>{account.ca_amount}</h6>
-                        <div>{buttons}</div>
-                    </div>
-                )
-            }
-        )
+            )
     )
 }
 

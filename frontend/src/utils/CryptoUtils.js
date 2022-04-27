@@ -14,6 +14,14 @@ export function getCurrencyNameById(id) {
             break;
         }
         case 4: {
+            name = "USDT";
+            break;
+        }
+        case 5: {
+            name = "BNB";
+            break;
+        }
+        case 6: {
             name = "UNI";
             break;
         }

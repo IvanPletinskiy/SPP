@@ -52,7 +52,7 @@ function BuyScreen() {
             //Don't edit, we should use == and not === below
             const targetUsdValue = accounts.find((it) => it.ca_id == ca_id).usd_price
             const srcUsdValue = accounts.find((it) => it.ca_id == selectedOption.value).usd_price
-            const buyAmount = event.target.value * targetUsdValue / srcUsdValue
+            const buyAmount = event.target.value * srcUsdValue / targetUsdValue
             const targetCurrencyCode = accounts.find((it) => it.ca_id == ca_id).cc_code
             const youWillBuy = " " + buyAmount + " " + targetCurrencyCode
             setYouWillBuyText(youWillBuy)

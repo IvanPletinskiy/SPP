@@ -11,13 +11,6 @@ function App() {
             .then((users) => setUsers(users))
     }, []);
 
-    const [accounts, setAccounts] = React.useState(null);
-    React.useEffect(() => {
-        fetch("/accounts")
-            .then((res) => res.json())
-            .then((accounts) => setAccounts(accounts))
-    }, []);
-
     const [cryptocurrencies, setCryptocurrencies] = React.useState(null);
     React.useEffect(() => {
         fetch("/cryptocurrencies")
@@ -58,8 +51,7 @@ function App() {
         <div className="App">
             <header className="">
                 <div>
-                    {/*{!accounts ? "" : <AccountsList accounts={accounts}/>}*/}
-                    {!accounts ? "" : <div>{AccountsList(accounts, navigate)}</div>}
+                    <div>{AccountsList(navigate)}</div>
                 </div>
 
             </header>

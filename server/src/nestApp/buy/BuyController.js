@@ -1,6 +1,5 @@
 import {Bind, Controller, Dependencies, Get, Post, Query, Req, Res} from '@nestjs/common'
 import {CurrenciesRepository} from "../../db/repositories/CurrenciesRepository";
-import {getUsdPrice} from "../../utils/CryptoUtils";
 import {AccountsRepository} from "../../db/repositories/AccountsRepository";
 import {TransactionsRepository} from "../../db/repositories/TransactionsRepository";
 
@@ -18,7 +17,7 @@ export class BuyController {
         const currencies = await this.currenciesRepository.getAllCurrencies()
 
         userAccounts.map((account) => {
-            account.usd_price = getUsdPrice(account.fk_cc_id)
+            account.usd_price = currencies.find((it) => it.cc_id === account.fk_cc_id).usd_price
             account.cc_code = currencies.find((it) => it.cc_id === account.fk_cc_id).cc_code
             account.cc_name = currencies.find((it) => it.cc_id === account.fk_cc_id).cc_name
         })
