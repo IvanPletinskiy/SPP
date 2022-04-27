@@ -43,9 +43,7 @@ CREATE TABLE "Cryptocurrency"
 CREATE TABLE "Topup"
 (
 	to_id bigserial NOT NULL,
-	to_fiat_iban varchar(34) NOT NULL,
 	to_fiat_amount money NOT NULL,
-	to_cryptocurrency_amount money NOT NULL,
 	to_datetime time with time zone NOT NULL,
 	fk_ac_id bigint NOT NULL
 )
