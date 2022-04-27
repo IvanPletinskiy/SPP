@@ -39,14 +39,14 @@ VALUES (100, '2022-07-05 13:23:40+02', 3);
 INSERT INTO "Topup"(to_fiat_amount, to_datetime, fk_ac_id)
 VALUES (1000, '2021-07-05 14:24:40+02', 4);
 
-INSERT INTO "Withdrawal"(wi_fiat_amount, wi_datetime, fk_ca_id)
-VALUES (100, '2021-03-12 11:21:40+02', 1);
-INSERT INTO "Withdrawal"(wi_fiat_amount, wi_datetime, fk_ca_id)
-VALUES (320, '2022-02-08 14:22:40+02', 2);
-INSERT INTO "Withdrawal"(wi_fiat_amount, wi_datetime, fk_ca_id)
-VALUES (2500, '2019-03-07 13:23:40+02', 3);
-INSERT INTO "Withdrawal"(wi_fiat_amount, wi_datetime, fk_ca_id)
-VALUES (40, '2022-07-08 18:24:40+02', 4);
+INSERT INTO "Withdrawal"(wi_iban, wi_cryptocurrency_amount, wi_fiat_amount, wi_datetime, fk_ca_id)
+VALUES ('BY12ALFF123473JYNC2293525757AS4411', 0.003, 100, '2021-03-12 11:21:40+02', 1);
+INSERT INTO "Withdrawal"(wi_iban, wi_cryptocurrency_amount, wi_fiat_amount, wi_datetime, fk_ca_id)
+VALUES ('RU12ALFF123473JYNC2293525757AS4411', 0.323, 320, '2022-02-08 14:22:40+02', 2);
+INSERT INTO "Withdrawal"(wi_iban, wi_cryptocurrency_amount, wi_fiat_amount, wi_datetime, fk_ca_id)
+VALUES ('UK12ALFF123473JYNC2293525757AS4411', 10, 2500, '2019-03-07 13:23:40+02', 3);
+INSERT INTO "Withdrawal"(wi_iban, wi_cryptocurrency_amount, wi_fiat_amount, wi_datetime, fk_ca_id)
+VALUES ('US12ALFF123473JYNC2293525757AS4411', 0.5, 40, '2022-07-08 18:24:40+02', 4);
 
 INSERT INTO "Transaction"(tr_amount_from, tr_amount_to, tr_datetime, fk_account_from, fk_account_to)
 VALUES (0.11, 5, '2021-03-04 11:21:40+02', 1, 2);

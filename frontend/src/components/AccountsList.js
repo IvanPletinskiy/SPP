@@ -16,16 +16,7 @@ export default function AccountsList(accounts, navigate) {
                                     }
                                 })
                             }}>Пополнить</button>
-                        <button
-                        onClick={() => {
-                            navigate("/withdrawal", {
-                                state: {
-                                    ca_id: account.ca_id,
-                                    ca_number: account.ca_number,
-                                    fk_cc_id: account.fk_cc_id
-                                }
-                            })
-                        }}>Вывести</button>
+                        <button>Вывести</button>
                     </div>
                 } else {
                     buttons = <div>
